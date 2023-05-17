@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,4 +21,5 @@ use App\Http\Controllers\ApplicationController;
 // Route::get('/demo', function () {
 //     return view('demo');
 // });
+Route::get('/api/users', [UserController::class, 'index']);
 Route::get('{view}', ApplicationController::class)->where('view', '(.*)');
