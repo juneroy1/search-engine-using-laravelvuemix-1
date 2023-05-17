@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\UserController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,12 +16,12 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-// Route::get('/demo', function () {
-//     return view('demo');
-// });
+// api routes
 Route::get('/api/users', [UserController::class, 'index']);
+
+
+
+
+// vue routes
 Route::get('{view}', ApplicationController::class)->where('view', '(.*)');
