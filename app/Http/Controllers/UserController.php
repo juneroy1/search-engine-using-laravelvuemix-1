@@ -19,6 +19,9 @@ class UserController extends Controller
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
             'middle_name' => 'required|max:255',
+            'address' => 'required|max:255',
+            'description' => 'required|max:255',
+            'email' => 'required|max:255|email|unique:user',
         ]);
         
 
@@ -27,11 +30,34 @@ class UserController extends Controller
                 'sucess'    => false,
                 'message'   => 'Validation errors',
                 'data'      => $validator->errors()
-            ]);
+            ],403);
         }         
         
+        // get all data
+        $data = $request->all();
+        $data['name'] = $request->first_name.' '. $request->last_name;
+        $data['password'] = '';
 
         // create user
+        $user = User::create($data);
+
+        // check if success
+        if ($user) {
+
+            // return response with data created
+            return response()->json([
+                'sucess'    => true,
+                'message'   => 'Successfully created new User',
+                'data'      => $user
+            ]);
+        }
+
+        // else error
+        return response()->json([
+                'sucess'    => true,
+                'message'   => 'Something went wrong',
+        ]);
+
         
     }
     public function index()
