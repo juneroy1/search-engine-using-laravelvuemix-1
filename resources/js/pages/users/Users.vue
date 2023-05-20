@@ -1,6 +1,6 @@
 <template>
     <div>
-        {{ users }}
+        <!-- {{ users }} -->
         <div class="container">test</div>
     </div>
 </template>
