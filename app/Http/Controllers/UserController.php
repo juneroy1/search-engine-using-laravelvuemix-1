@@ -28,14 +28,6 @@ class UserController extends Controller
         
         try{
             $userService = $this->userService->createUser($validated); 
-                // check if success
-                // return response with data created
-                return response()->json([
-                    'sucess'    => true,
-                    'message'   => 'Successfully created new User',
-                    'data'      => $userService
-                ]);
-            
         }catch(Exception $e){
             // else error
             return response()->json([
@@ -43,13 +35,13 @@ class UserController extends Controller
                     'message'   => $e->getMessage(),
             ]);
         }
-        
-
-        
-
-        
-
-        
+        // check if success
+        // return response with data created
+        return response()->json([
+            'sucess'    => true,
+            'message'   => 'Successfully created new User',
+            'data'      => $userService
+        ]);
     }
     public function index()
     {
