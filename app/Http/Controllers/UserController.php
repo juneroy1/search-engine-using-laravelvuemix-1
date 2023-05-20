@@ -4,59 +4,50 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Requests\UserStoreRequest;
 use Validator;
+use App\Contracts\UserServiceInterface;
+
 class UserController extends Controller
 {
+    public $userService;
+    public function __construct(UserServiceInterface $userService)
+    {
+        $this->userService = $userService;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
 
-    public function userCreate(Request $request){
+    public function userCreate(UserStoreRequest $request){
 
-        $validator = Validator::make($request->all(), [
-            'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
-            'middle_name' => 'required|max:255',
-            'address' => 'required|max:255',
-            'description' => 'required|max:255',
-            'email' => 'required|max:255|email|unique:user',
-        ]);
+        $validated = $request->validated();      
         
-
-        if ($validator->fails()) {
+        try{
+            $userService = $this->userService->createUser($validated); 
+                // check if success
+                // return response with data created
+                return response()->json([
+                    'sucess'    => true,
+                    'message'   => 'Successfully created new User',
+                    'data'      => $userService
+                ]);
+            
+        }catch(Exception $e){
+            // else error
             return response()->json([
-                'sucess'    => false,
-                'message'   => 'Validation errors',
-                'data'      => $validator->errors()
-            ],403);
-        }         
-        
-        // get all data
-        $data = $request->all();
-        $data['name'] = $request->first_name.' '. $request->last_name;
-        $data['password'] = '';
-
-        // create user
-        $user = User::create($data);
-
-        // check if success
-        if ($user) {
-
-            // return response with data created
-            return response()->json([
-                'sucess'    => true,
-                'message'   => 'Successfully created new User',
-                'data'      => $user
+                    'sucess'    => false,
+                    'message'   => $e->getMessage(),
             ]);
         }
+        
 
-        // else error
-        return response()->json([
-                'sucess'    => true,
-                'message'   => 'Something went wrong',
-        ]);
+        
+
+        
 
         
     }
