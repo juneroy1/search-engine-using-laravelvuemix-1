@@ -4,7 +4,7 @@ import Users from "./pages/users/Users.vue";
 
 export default [
     {
-        path: "/",
+        path: "/users",
         name: "users",
         component: Users,
     },
