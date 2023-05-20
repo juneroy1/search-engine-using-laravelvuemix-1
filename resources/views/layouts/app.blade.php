@@ -44,7 +44,7 @@
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                             >
-                                Tables
+                                Users
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -57,17 +57,24 @@
                                 <li>
                                     <router-link
                                         class="dropdown-item"
+                                        to="/user/create"
+                                        >New User</router-link
+                                    >
+                                </li>
+                                <!-- <li>
+                                    <router-link
+                                        class="dropdown-item"
                                         to="/teacher"
                                         >Teacher</router-link
                                     >
-                                </li>
-                                <li>
+                                </li> -->
+                                <!-- <li>
                                     <router-link
                                         class="dropdown-item"
                                         to="/student"
                                         >Student</router-link
                                     >
-                                </li>
+                                </li> -->
                                 <!-- <li><hr class="dropdown-divider" /></li>
                                 <li>
                                     <a class="dropdown-item" href="#"
