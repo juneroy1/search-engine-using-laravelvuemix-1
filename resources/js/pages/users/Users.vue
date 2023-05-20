@@ -56,6 +56,21 @@
 
                 <div class="row mb-3">
                     <div class="col-md-2">
+                        <label for="email" class="form-label">Email</label>
+                    </div>
+                    <div class="">
+                        <input
+                            v-model="user.email"
+                            type="email"
+                            class="form-control-lg w-100"
+                            id="email"
+                            placeholder="Email..."
+                        />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-2">
                         <label for="address" class="form-label">Address</label>
                     </div>
                     <div class="">
@@ -156,12 +171,17 @@ export default {
         },
         submitCreateUser(e) {
             e.preventDefault();
-            axios.post("/api/user", this.user).then((response) => {
-                console.log("users response create", response);
-                // if (response && response.data && response.data.users) {
-                //     this.users = response.data.users;
-                // }
-            });
+            axios
+                .post("/api/user", this.user)
+                .then((response) => {
+                    console.log("users response create", response);
+                    // if (response && response.data && response.data.users) {
+                    //     this.users = response.data.users;
+                    // }
+                })
+                .catch((error) => {
+                    console.log("error", error.response.data);
+                });
             // console.log("this.user", this.user.first_name);
         },
     },
