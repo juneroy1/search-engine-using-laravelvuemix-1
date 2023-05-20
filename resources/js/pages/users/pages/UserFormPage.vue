@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- {{ users }} -->
-        {{ user }}
+        <!-- {{ user }} -->
         <form @submit="submitCreateUser">
             <div class="container">
                 <div class="row mb-3">
