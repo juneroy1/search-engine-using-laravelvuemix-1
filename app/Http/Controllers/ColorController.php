@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\ColorModel;
 class ColorController extends Controller
 {
     /**
@@ -14,6 +14,12 @@ class ColorController extends Controller
     public function index()
     {
         //
+        $colors = ColorModel::all();
+
+        return response()->json([
+            'colors' => $colors
+        ]);
+        
     }
 
     /**
