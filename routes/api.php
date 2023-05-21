@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ColorController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,6 +18,8 @@ use App\Http\Controllers\UserController;
 
 // api for animal
 Route::resource('animals', AnimalController::class);
+Route::resource('color', ColorController::class);
+
 Route::post('user', [UserController::class, 'userCreate']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
