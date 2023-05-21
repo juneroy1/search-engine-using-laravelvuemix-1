@@ -9,7 +9,7 @@ export default {
     },
     methods: {
         getOptionColorlist() {
-            axios.get("/api/colors").then((response) => {
+            axios.get("/api/color").then((response) => {
                 console.log("response color", response);
             });
         },
