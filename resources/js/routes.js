@@ -1,5 +1,6 @@
 import Animals from "./pages/animals/Animals.vue";
-import Colors from "./pages/colors/Colors.vue";
+import ColorFormPage from "./pages/colors/pages/ColorFormPage.vue";
+import ColorListPage from "./pages/colors/pages/ColorListPage.vue";
 import UserListPage from "./pages/users/pages/UserListPage.vue";
 import UserFormPage from "./pages/users/pages/UserFormPage.vue";
 
@@ -21,7 +22,12 @@ export default [
     },
     {
         path: "/colors",
-        name: "colors",
-        component: Colors,
+        name: "colors.list",
+        component: ColorListPage,
+    },
+    {
+        path: "/color/create",
+        name: "colors.create",
+        component: ColorFormPage,
     },
 ];

@@ -1,8 +1,8 @@
 <template>
-    <div>colors</div>
+    <div>color form page</div>
 </template>
 <script>
 export default {
-    name: "Colors",
+    name: "ColorFormPage",
 };
 </script>
