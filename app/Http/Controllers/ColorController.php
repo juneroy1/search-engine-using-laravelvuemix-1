@@ -41,6 +41,23 @@ class ColorController extends Controller
     public function store(Request $request)
     {
         //
+        $color = new ColorModel;
+        $color->name = $request->name;
+        $color->description = $request->description;
+        $ok = $color->save();
+
+        if ($ok) {
+            return response()->json([
+                'success' => true,
+                'color' => $color,
+                'message' => 'Successfully registered color'
+            ],200);
+        }
+
+         return response()->json([
+                'success' => false,
+                'error' => 'Something went wrong',
+            ],200);
     }
 
     /**
@@ -52,6 +69,7 @@ class ColorController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
