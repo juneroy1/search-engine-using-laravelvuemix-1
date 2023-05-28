@@ -26,7 +26,7 @@ class EloquentAnimalRepository implements AnimalRepositoryInterface {
     public function delete($id)
     {
         // TODO: Implement delete() method.
-       
+        return AnimalModel::destroy($id);
     }
 
 }
