@@ -6,7 +6,7 @@ use App\Contracts\UserServiceInterface;
 
 class UserService implements UserServiceInterface
 {
-    protected $userRepository;
+    protected  $userRepository;
 
     public function __construct(UserRepositoryInterface $userRepository)
     {
