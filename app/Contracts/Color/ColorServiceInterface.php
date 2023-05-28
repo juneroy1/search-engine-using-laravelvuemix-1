@@ -7,10 +7,6 @@ interface ColorServiceInterface {
 
     public function updateColor($id, array $data);
 
-
     public function deleteColor($id);
 }
-
-
-
 ?>
