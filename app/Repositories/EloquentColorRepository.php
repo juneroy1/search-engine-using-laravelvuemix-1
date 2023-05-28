@@ -8,11 +8,7 @@ class EloquentColorRepository implements  ColorRepositoryInterface
 {
     public function create(array $data)
     {
-        // get all data
-        $data['name'] = $data['first_name'].' '. $data['last_name'];
-        $data['password'] = '';
-
-        // create user
+        // create color
         return ColorModel::create($data);
     }
 
