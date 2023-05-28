@@ -2,16 +2,20 @@
 
 namespace App\Providers;
 
+use App\Contracts\Animal\AnimalRepositoryInterface;
+use App\Contracts\Animal\AnimalServiceInterface;
 use App\Contracts\UserRepositoryInterface;
-use App\Contracts\ColorRepositoryInterface;
+use App\Contracts\Color\ColorRepositoryInterface;
 
 
 use App\Contracts\UserServiceInterface;
-use App\Contracts\ColorServiceInterface;
+use App\Contracts\Color\ColorServiceInterface;
+use App\Repositories\EloquentAnimalRepository;
 use App\Repositories\EloquentUserRepository;
 use App\Repositories\EloquentColorRepository;
 
 
+use App\Services\AnimalService;
 use App\Services\UserService;
 use App\Services\ColorService;
 
@@ -32,6 +36,11 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(ColorRepositoryInterface::class, EloquentColorRepository::class);
         $this->app->bind(ColorServiceInterface::class, ColorService::class);
+
+        $this->app->bind(AnimalRepositoryInterface::class, EloquentAnimalRepository::class);
+        $this->app->bind(AnimalServiceInterface::class, AnimalService::class);
+
+
     }
 
     /**
