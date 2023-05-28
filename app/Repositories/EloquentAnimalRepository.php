@@ -17,11 +17,16 @@ class EloquentAnimalRepository implements AnimalRepositoryInterface {
     public function update($id, array $data)
     {
         // TODO: Implement update() method.
+        $animal = AnimalModel::findOrFail($id);
+        $animal->update($data);
+
+        return $animal;
     }
 
     public function delete($id)
     {
         // TODO: Implement delete() method.
+       
     }
 
 }
