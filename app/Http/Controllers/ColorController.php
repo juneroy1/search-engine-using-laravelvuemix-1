@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ColorModel;
+use Illuminate\Support\Facades\DB;
+
 class ColorController extends Controller
 {
     /**
@@ -19,7 +21,7 @@ class ColorController extends Controller
         return response()->json([
             'colors' => $colors
         ]);
-        
+
     }
 
     /**
@@ -41,23 +43,30 @@ class ColorController extends Controller
     public function store(Request $request)
     {
         //
-        $color = new ColorModel;
-        $color->name = $request->name;
-        $color->description = $request->description;
-        $ok = $color->save();
+        DB::beginTransaction();
+        try {
+            $color = new ColorModel;
+            $color->name = $request->name;
+            $color->description = $request->description;
+            $ok = $color->save();
 
-        if ($ok) {
+            if ($ok) {
+                return response()->json([
+                    'success' => true,
+                    'color' => $color,
+                    'message' => 'Successfully registered color'
+                ],200);
+            }
+        }catch (\Exception $e){
+            DB::rollBack();
             return response()->json([
-                'success' => true,
-                'color' => $color,
-                'message' => 'Successfully registered color'
-            ],200);
-        }
-
-         return response()->json([
                 'success' => false,
                 'error' => 'Something went wrong',
             ],200);
+        }
+
+
+
     }
 
     /**
