@@ -45,7 +45,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(AnimalServiceInterface::class, AnimalService::class);
 
         $this->app->bind(MovieRepositoryInterface::class, EloquentMovieRepository::class);
-        
+        $this->app->bind(MovieServiceInterface::class, MovieService::class);
 
     }
 
