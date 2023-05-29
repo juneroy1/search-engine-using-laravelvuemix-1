@@ -64,9 +64,6 @@ class ColorController extends Controller
                 'error' => 'Something went wrong',
             ],200);
         }
-
-
-
     }
 
     /**
