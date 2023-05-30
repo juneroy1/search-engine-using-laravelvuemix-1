@@ -4,26 +4,22 @@ namespace App\Providers;
 
 use App\Contracts\Animal\AnimalRepositoryInterface;
 use App\Contracts\Animal\AnimalServiceInterface;
-use App\Contracts\Animal\MovieRepositoryInterface;
-use App\Contracts\Animal\MovieServiceInterface;
-use App\Contracts\UserRepositoryInterface;
 use App\Contracts\Color\ColorRepositoryInterface;
-
-
-use App\Contracts\UserServiceInterface;
 use App\Contracts\Color\ColorServiceInterface;
+use App\Contracts\Movie\MovieRepositoryInterface;
+use App\Contracts\Movie\MovieServiceInterface;
+use App\Contracts\UserRepositoryInterface;
+use App\Contracts\UserServiceInterface;
 use App\Repositories\EloquentAnimalRepository;
+use App\Repositories\EloquentColorRepository;
 use App\Repositories\EloquentMovieRepository;
 use App\Repositories\EloquentUserRepository;
-use App\Repositories\EloquentColorRepository;
-
-
 use App\Services\AnimalService;
+use App\Services\ColorService;
 use App\Services\MovieService;
 use App\Services\UserService;
-use App\Services\ColorService;
-
 use Illuminate\Support\ServiceProvider;
+
 
 class AppServiceProvider extends ServiceProvider
 {
